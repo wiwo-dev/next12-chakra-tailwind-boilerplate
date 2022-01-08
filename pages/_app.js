@@ -14,12 +14,13 @@ const colors = {
 
 //const theme = extendTheme({ colors });
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     <ChakraProvider theme={theme} resetCSS>
-      <Component {...pageProps} />
+      {/* <Global styles={GlobalStyles} /> */}
+
+      {getLayout(<Component {...pageProps} />)}
     </ChakraProvider>
   );
 }
-
-export default MyApp;
